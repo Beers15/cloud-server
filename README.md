@@ -1,40 +1,32 @@
-# basic-auth
+# Cloud Server
 
-## Installation
+## A very basic server deployed to AWS
 
-  clone repo, and then in a terminal run the 'npm i' command while in the root directory to install dependencies. 
+The server here was built with the purpose of getting practice at creating a cloud server hosted that is on a Elastic Beanstalk virtual environment.
+
+---------
+
+### Basic process breakdown
+
+#### GUI
   
-  To run the application, enter the 'npm run start' command in a terminal while in the root directory.
+* Select 'create application' from EB dashboard
+* Choose application name
+* Choose appropriate platform type, branch, and version
+* Select upload code and provide a zipped folder with server contents
+* Select create app
 
-## Summary of Problem Domain
+#### EB CLI
 
-  Create a basic auth application. Application requirements are as follows:
+* Create an AWS user and add them to a user group that AWS EB admin permissions
+* After installing aws cli, execute 'aws configure' and enter the created user's access key id and secret access key
+* Navigate to server directory in terminal and execute 'eb init' (requires eb cli installation)
+* Execute 'eb create' and configure as needed
+* Execute 'eb deploy' to launch server on eb virtual environment
+
+  ^ Refer to AWS docs for details on how to properly configure these steps
   
-  Phase 1 requirements:
 
-    Users will be able to create an account that will persist for future app visits
+[link to server deployed with Elastic Beanstalk Dashboard GUI](http://cloudserver-env-2.eba-fyar39np.us-east-2.elasticbeanstalk.com/)
 
-    Registered users will be able to login to their account so that they may access protected information
-
-    App will have Proper CI/CD configuration
-
-## Links to application deployment
-
-  App deployed on Heroku [here](https://basic-auth-class06.herokuapp.com/)
-
-  Pull req from dev found [here](https://github.com/Beers15/basic-auth/pull/1)
-
-## Uml Diagram
-
-![diagram](./uml-diagram.png)
-
-## Routes
-
-* REST Method POST
-  * Path: /signin
-    * Sends a request with an "Authorization" header with the value Basic TOKEN that contains a properly encoded username and password combination
-    * returns the user's data as output after account creation, or a proper error response if the request wasn't successful
-
-  * Path: /signup
-    * takes a JSON obj or form data as input with user and password information
-    * returns the user's data as output after a successful login attempt, or a proper error response if the request wasn't successful
+[link to server deployed with Elastic Beanstalk CLI](http://cloud-server-cli-env.eba-dqy3mjyj.us-west-2.elasticbeanstalk.com/)
